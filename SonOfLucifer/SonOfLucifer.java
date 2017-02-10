@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by danries on 2/10/17.
  */
-public class SonOfLucifer extends AdvancedRobot{
+public class SonOfLucifer extends RateControlRobot{
     /**
      * run: SonOfLucifer default behavior
      */
@@ -15,12 +15,10 @@ public class SonOfLucifer extends AdvancedRobot{
 
         setColors(Color.black,Color.DARK_GRAY,Color.red); // body,gun,radar
 
-        while(true) {
-            ahead(100);
-            turnGunRight(360);
-            back(100);
-            turnGunRight(360);
-        }
+        turnRadarRightRadians(Double.POSITIVE_INFINITY);
+        do {
+
+        }while (true);
     }
 
     /**
@@ -28,6 +26,7 @@ public class SonOfLucifer extends AdvancedRobot{
      */
     public void onScannedRobot(ScannedRobotEvent e) {
         // Replace the next line with any behavior you would like
+        double radarTurn = getHeadingRadians() + e.getBearingRadians() - getRadarHeadingRadians(); 
         fire(1);
     }
 
